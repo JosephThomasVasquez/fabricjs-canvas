@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "fabric": "^4.5.1"
+  },
+  "name": "fabricjs-canvas",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosephThomasVasquez/fabricjs-canvas.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosephThomasVasquez/fabricjs-canvas/issues"
+  },
+  "homepage": "https://github.com/JosephThomasVasquez/fabricjs-canvas#readme"
+}
