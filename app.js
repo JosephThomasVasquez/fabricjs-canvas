@@ -33,6 +33,18 @@ const rect = new fabric.Rect({
   strokeUniform: true
 });
 
+const rect2 = new fabric.Rect({
+  top: 40,
+  left: (canvas.width / 2 + 100),
+  fill: "#ff00a2",
+  stroke: "#885600",
+  strokeWidth: shapes.strokeWidth,
+  width: shapes.width,
+  height: shapes.height,
+  strokeUniform: true
+});
+
 console.log("rect", rect);
 
 canvas.add(rect);
+canvas.add(rect2);
