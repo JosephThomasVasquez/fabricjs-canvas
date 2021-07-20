@@ -35,7 +35,7 @@ const rect = new fabric.Rect({
   stroke: shapes.stroke,
   strokeWidth: shapes.strokeWidth,
   width: shapes.width,
-  height: shapes.height,
+  height: shapes.height,    
   strokeUniform: true,
   cornerColor: "#232323",
 });

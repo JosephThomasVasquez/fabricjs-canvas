@@ -9,9 +9,23 @@
     <script src="./lib/fabric.min.js"></script>
   </head>
   <body>
-    <canvas id="canvas" width="800px" height="800px"></canvas>
+    <section id="canvas-section">
+      <canvas
+        id="canvas"                   
+        width="1200"
+        height="800px"
+        class="main-canvas"
+      ></canvas>
+    </section>
+
     <form class="layout-form">
-      <input type="text" name="layout-name" id="layout-name" class="layout-form-input"/>
+      <label for="layout-name">Layout Name</label>
+      <input
+        type="text"
+        name="layout-name"
+        id="layout-name"
+        class="layout-form-input"
+      />
     </form>
     <script src="app.js"></script>
   </body>
