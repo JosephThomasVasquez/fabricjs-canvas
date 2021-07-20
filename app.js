@@ -1,4 +1,6 @@
 const canvas = new fabric.Canvas("canvas");
+// canvas.setBackgroundImage("https://source.unsplash.com/random");
+const imageElement = document.getElementById("my-image");
 
 fabric.Object.prototype.noScaleCache = false;
 /*
@@ -19,6 +21,17 @@ function toggleUniform() {
 
 console.log("canvas", canvas);
 
+let imageFabric = new fabric.Image(imageElement, {
+  left: 100,
+  top: 100,
+  angle: 30,
+  cornerColor: "#4c00ff",
+  cornerSize: 8,
+  cornerStyle: "circle",
+  rx: 2,
+  ry: 2,
+});
+
 // Set Default Shapes attributes
 const shapes = {
   width: 80,
@@ -37,8 +50,8 @@ const rect = new fabric.Rect({
   width: shapes.width,
   height: shapes.height,
   strokeUniform: true,
-  cornerColor: "#8c8c8c",
-  cornerSize: 6,
+  cornerColor: "#4c00ff",
+  cornerSize: 8,
   cornerStyle: "circle",
   lockScalingX: true,
   lockScalingY: true,
@@ -55,8 +68,8 @@ const rect2 = new fabric.Rect({
   width: shapes.width,
   height: shapes.height,
   strokeUniform: true,
-  cornerColor: "#8c8c8c",
-  cornerSize: 6,
+  cornerColor: "#4c00ff",
+  cornerSize: 8,
   cornerStyle: "circle",
   lockScalingX: true,
   lockScalingY: true,
@@ -68,3 +81,4 @@ console.log("rect", rect);
 
 canvas.add(rect);
 canvas.add(rect2);
+canvas.add(imageFabric);

@@ -29,3 +29,8 @@ body {
 .layout-form-input {
   width: 400px;
 }
+
+.images-items {
+  width: 100px;
+  height: 100%;
+}
