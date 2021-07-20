@@ -35,9 +35,15 @@ const rect = new fabric.Rect({
   stroke: shapes.stroke,
   strokeWidth: shapes.strokeWidth,
   width: shapes.width,
-  height: shapes.height,    
+  height: shapes.height,
   strokeUniform: true,
-  cornerColor: "#232323",
+  cornerColor: "#8c8c8c",
+  cornerSize: 6,
+  cornerStyle: "circle",
+  lockScalingX: true,
+  lockScalingY: true,
+  rx: 2,
+  ry: 2,
 });
 
 const rect2 = new fabric.Rect({
@@ -49,6 +55,13 @@ const rect2 = new fabric.Rect({
   width: shapes.width,
   height: shapes.height,
   strokeUniform: true,
+  cornerColor: "#8c8c8c",
+  cornerSize: 6,
+  cornerStyle: "circle",
+  lockScalingX: true,
+  lockScalingY: true,
+  rx: 2,
+  ry: 2,
 });
 
 console.log("rect", rect);
