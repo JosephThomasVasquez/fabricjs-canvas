@@ -1,8 +1,14 @@
-const canvas = new fabric.Canvas("canvas", {
-  width: 1200,
-  height: 800,
-  backgroundColor: '#ffffff'
-});
+const initializeCanvas = (id) => {
+  const canvas = new fabric.Canvas(id, {
+    width: 1200,
+    height: 800,
+    backgroundColor: "#ffffff",
+  });
+  
+  return canvas;
+};
+
+const canvas = initializeCanvas("canvas");
 // canvas.setBackgroundImage("https://source.unsplash.com/random");
 const imageElement = document.getElementById("my-image");
 
@@ -24,6 +30,20 @@ function toggleUniform() {
 }
 
 console.log("canvas", canvas);
+fabric.Image.fromURL(
+  "https://aptito.com/wp-content/uploads/2018/06/restaurant-floor-plan.png",
+  (bgImage) => {
+    console.log("background image", bgImage);
+
+    canvas.set("width", bgImage.width);
+    canvas.set("height", bgImage.height);
+
+    canvas.backgroundImage = bgImage;
+
+    console.log("canvas", canvas);
+    canvas.requestRenderAll();
+  }
+);
 
 // Canvas events MOUSE DOWN
 canvas.on("mouse:down", function (options) {
