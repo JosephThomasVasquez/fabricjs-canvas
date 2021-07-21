@@ -21,6 +21,12 @@ function toggleUniform() {
 
 console.log("canvas", canvas);
 
+// Canvas events MOUSE DOWN
+canvas.on("mouse:down", function (options) {
+  console.log("options", options);
+  console.log(options.e.clientX, options.e.clientY);
+});
+
 let imageFabric = new fabric.Image(imageElement, {
   left: 100,
   top: 100,
