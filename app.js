@@ -27,6 +27,28 @@ canvas.on("mouse:down", function (options) {
   console.log(options.e.clientX, options.e.clientY);
 });
 
+// MOUSE OVER EVENT
+canvas.on("mouse:over", function (e) {
+  const colors = [];
+
+  if (e.target) {
+    console.log("e.target", e.target);
+    colors.push(e.target.fill);
+    console.log(colors);
+    e.target.set("opacity", 0.7);
+  }
+
+  canvas.renderAll();
+});
+
+// MOUSE OUT EVENT
+canvas.on("mouse:out", function (e) {
+  if (e.target) {
+    e.target.set("opacity", 1);
+  }
+  canvas.renderAll();
+});
+
 let imageFabric = new fabric.Image(imageElement, {
   left: 100,
   top: 100,
