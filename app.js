@@ -1,4 +1,8 @@
-const canvas = new fabric.Canvas("canvas");
+const canvas = new fabric.Canvas("canvas", {
+  width: 1200,
+  height: 800,
+  backgroundColor: '#ffffff'
+});
 // canvas.setBackgroundImage("https://source.unsplash.com/random");
 const imageElement = document.getElementById("my-image");
 
