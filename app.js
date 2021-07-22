@@ -9,15 +9,50 @@ const initializeCanvas = (id) => {
   return canvas;
 };
 
+const cursorModeButton = document.querySelector("#mode-select-cursor");
 const panModeButton = document.querySelector("#mode-select-pan");
 const drawModeButton = document.querySelector("#mode-select-draw");
 
-drawModeButton.addEventListener("click", (e) => {
+cursorModeButton.addEventListener("click", (e) => {
   console.log("event", e.target.checked);
+
+  const activeTool = e.target.checked;
+  const toolIcon = e.target.previousElementSibling;
+  if (activeTool) {
+    toolIcon.classList.add("selected-tool");
+    panModeButton.checked = false;
+    panModeButton.previousElementSibling.classList.remove("selected-tool");
+    drawModeButton.checked = false;
+    drawModeButton.previousElementSibling.classList.remove("selected-tool");
+  }
 });
 
 panModeButton.addEventListener("click", (e) => {
   console.log("event", e.target.checked);
+
+  const activeTool = e.target.checked;
+  const toolIcon = e.target.previousElementSibling;
+  if (activeTool) {
+    toolIcon.classList.add("selected-tool");
+    cursorModeButton.checked = false;
+    cursorModeButton.previousElementSibling.classList.remove("selected-tool");
+    drawModeButton.checked = false;
+    drawModeButton.previousElementSibling.classList.remove("selected-tool");
+  }
+});
+
+drawModeButton.addEventListener("click", (e) => {
+  console.log("event", e.target.checked);
+
+  const activeTool = e.target.checked;
+  const toolIcon = e.target.previousElementSibling;
+  if (activeTool) {
+    toolIcon.classList.add("selected-tool");
+    cursorModeButton.checked = false;
+    cursorModeButton.previousElementSibling.classList.remove("selected-tool");
+    panModeButton.checked = false;
+    panModeButton.previousElementSibling.classList.remove("selected-tool");
+  }
 });
 
 const toolModes = (e) => {};

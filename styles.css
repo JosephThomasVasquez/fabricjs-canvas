@@ -39,7 +39,12 @@ body {
 .toolbar-container {
   margin: 20px;
 }
+
 .label-tool-icon {
   background: #232323;
   padding: 10px;
+}
+
+.selected-tool {
+  background-color: red;
 }
