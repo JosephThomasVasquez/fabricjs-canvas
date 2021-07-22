@@ -28,6 +28,7 @@ cursorModeButton.addEventListener("click", (e) => {
     drawModeButton.checked = false;
     drawModeButton.previousElementSibling.classList.remove("selected-tool");
     canvas.isDrawingMode = false;
+    canvas.set("selection", true);
   }
 });
 
@@ -41,6 +42,7 @@ panModeButton.addEventListener("click", (e) => {
     cursorModeButton.previousElementSibling.classList.remove("selected-tool");
     drawModeButton.checked = false;
     drawModeButton.previousElementSibling.classList.remove("selected-tool");
+    canvas.set("selection", false);
     canvas.isDrawingMode = false;
   }
 });
@@ -56,6 +58,8 @@ drawModeButton.addEventListener("click", (e) => {
     cursorModeButton.previousElementSibling.classList.remove("selected-tool");
     panModeButton.checked = false;
     panModeButton.previousElementSibling.classList.remove("selected-tool");
+    const isDrawing = (canvas.isDrawingMode = true);
+    drawingMode(isDrawing);
   }
 });
 
@@ -123,18 +127,12 @@ const drawingMode = (drawingState) => {
 // MOUSE MOVE EVENT
 canvas.on("mouse:move", (event) => {
   if (panModeButton.checked && mousePressed) {
-    canvas.set("selection", false);
     canvas.setCursor("grabbing");
     panMode(event);
   }
 
   if (drawModeButton.checked) {
     canvas.setCursor("crosshair");
-
-    if (mousePressed) {
-      const isDrawing = (canvas.isDrawingMode = true);
-      drawingMode(isDrawing);
-    }
   }
 });
 
