@@ -34,9 +34,6 @@ panModeButton.addEventListener("click", (e) => {
   const toolIcon = e.target.previousElementSibling;
 
   if (activeTool) {
-    canvas.set("selection", false);
-    canvas.setCursor("grabbing");
-
     toolIcon.classList.add("selected-tool");
     cursorModeButton.checked = false;
     cursorModeButton.previousElementSibling.classList.remove("selected-tool");
@@ -116,6 +113,8 @@ const panCanvas = (event) => {
 // MOUSE MOVE EVENT
 canvas.on("mouse:move", (event) => {
   if (panModeButton.checked && mousePressed) {
+    canvas.set("selection", false);
+    canvas.setCursor("grabbing");
     panCanvas(event);
   }
 });
