@@ -34,3 +34,12 @@ body {
   width: 100px;
   height: 100%;
 }
+
+/* TOOL BAR */
+.toolbar-container {
+  margin: 20px;
+}
+.label-tool-icon {
+  background: #232323;
+  padding: 10px;
+}

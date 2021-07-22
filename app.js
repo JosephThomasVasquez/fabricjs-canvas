@@ -9,6 +9,19 @@ const initializeCanvas = (id) => {
   return canvas;
 };
 
+const panModeButton = document.querySelector("#mode-select-pan");
+const drawModeButton = document.querySelector("#mode-select-draw");
+
+drawModeButton.addEventListener("click", (e) => {
+  console.log("event", e.target.checked);
+});
+
+panModeButton.addEventListener("click", (e) => {
+  console.log("event", e.target.checked);
+});
+
+const toolModes = (e) => {};
+
 const setBackgroundImage = (url, canvas) => {
   fabric.Image.fromURL(url, (bgImage) => {
     console.log("background image", bgImage);

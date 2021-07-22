@@ -12,9 +12,11 @@
     <title>Fabric Canvas</title>
     <script src="./lib/fabric.min.js"></script>
   </head>
+
   <body>
     <section id="form-section">
       <img src="PoolTable_TopDown.png" id="my-image" class="images-items" />
+
       <form class="layout-form">
         <label for="layout-name" class="label-input">Layout Name</label>
         <input
@@ -24,13 +26,32 @@
           class="layout-form-input"
         />
         <div class="toolbar-container">
+
           <label for="mode-select-pan" class="label-tool-icon"
+            ><i class="far fa-hand-paper"></i
+          ></label>
+          <input
+            type="radio"
+            name="mode-select-button"
+            id="mode-select-pan"
+            
+          />
+
+          <label for="mode-select-draw" class="label-tool-icon"
             ><i class="fas fa-pen"></i
           ></label>
-          <input type="radio" name="mode-select-pan" id="mode-select-pan" hidden/>
+          <input
+            type="radio"
+            name="mode-select-button"
+            id="mode-select-draw"
+            
+          />
+
+          
         </div>
       </form>
     </section>
+
     <section id="canvas-section">
       <canvas id="canvas" class="main-canvas"></canvas>
     </section>
