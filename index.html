@@ -4,15 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/632e35ede9.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <title>Fabric Canvas</title>
     <script src="./lib/fabric.min.js"></script>
   </head>
   <body>
-    <section id="canvas-section">
-      <canvas id="canvas" class="main-canvas"></canvas>
-    </section>
-
     <section id="form-section">
       <img src="PoolTable_TopDown.png" id="my-image" class="images-items" />
       <form class="layout-form">
@@ -23,7 +23,16 @@
           id="layout-name"
           class="layout-form-input"
         />
+        <div class="toolbar-container">
+          <label for="mode-select-pan" class="label-tool-icon"
+            ><i class="fas fa-pen"></i
+          ></label>
+          <input type="radio" name="mode-select-pan" id="mode-select-pan" hidden/>
+        </div>
       </form>
+    </section>
+    <section id="canvas-section">
+      <canvas id="canvas" class="main-canvas"></canvas>
     </section>
 
     <script src="app.js"></script>
