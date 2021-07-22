@@ -1,5 +1,10 @@
+const cursorModeButton = document.querySelector("#mode-select-cursor");
+const panModeButton = document.querySelector("#mode-select-pan");
+const drawModeButton = document.querySelector("#mode-select-draw");
+
 // Initialize the Canvas
 const initializeCanvas = (id) => {
+  cursorModeButton.previousElementSibling.classList.add("selected-tool");
   const canvas = new fabric.Canvas(id, {
     width: 1200,
     height: 1000,
@@ -10,10 +15,6 @@ const initializeCanvas = (id) => {
 };
 
 const canvas = initializeCanvas("canvas");
-
-const cursorModeButton = document.querySelector("#mode-select-cursor");
-const panModeButton = document.querySelector("#mode-select-pan");
-const drawModeButton = document.querySelector("#mode-select-draw");
 
 cursorModeButton.addEventListener("click", (e) => {
   console.log("event", e.target.checked);
