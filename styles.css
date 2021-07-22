@@ -50,6 +50,13 @@ body {
 }
 
 .label-tool-icon:hover {
+  background: linear-gradient(to bottom right, rgba(162, 255, 255, 0.25) 0%, rgba(126, 126, 255, 0.25) 100%);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+
+.label-tool-icon.selected-tool:hover {
   background: linear-gradient(to bottom right, rgb(162, 255, 255) 0%, rgb(126, 126, 255) 100%);
   padding: 10px;
   border-radius: 5px;

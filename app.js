@@ -9,6 +9,8 @@ const initializeCanvas = (id) => {
   return canvas;
 };
 
+const canvas = initializeCanvas("canvas");
+
 const cursorModeButton = document.querySelector("#mode-select-cursor");
 const panModeButton = document.querySelector("#mode-select-pan");
 const drawModeButton = document.querySelector("#mode-select-draw");
@@ -28,11 +30,13 @@ cursorModeButton.addEventListener("click", (e) => {
 });
 
 panModeButton.addEventListener("click", (e) => {
-  console.log("event", e.target.checked);
-
   const activeTool = e.target.checked;
   const toolIcon = e.target.previousElementSibling;
+
   if (activeTool) {
+    canvas.set("selection", false);
+    canvas.setCursor("grabbing");
+
     toolIcon.classList.add("selected-tool");
     cursorModeButton.checked = false;
     cursorModeButton.previousElementSibling.classList.remove("selected-tool");
@@ -71,8 +75,6 @@ const setBackgroundImage = (url, canvas) => {
   });
 };
 
-const canvas = initializeCanvas("canvas");
-
 setBackgroundImage(
   "https://aptito.com/wp-content/uploads/2018/06/restaurant-floor-plan.png",
   canvas
@@ -106,9 +108,6 @@ let mousePressed = false;
 
 const panCanvas = (event) => {
   const mouseEvents = event.e;
-
-  canvas.set("selection", false);
-  canvas.setCursor("grabbing");
   const delta = new fabric.Point(mouseEvents.movementX, mouseEvents.movementY);
   canvas.relativePan(delta);
   canvas.renderAll();
@@ -116,14 +115,8 @@ const panCanvas = (event) => {
 
 // MOUSE MOVE EVENT
 canvas.on("mouse:move", (event) => {
-  const mouseEvents = event.e;
-
-  if (panModeButton.checked === true && mousePressed) {
+  if (panModeButton.checked && mousePressed) {
     panCanvas(event);
-  } else {
-    canvas.set("selection", true);
-    canvas.setCursor("default");
-    canvas.renderAll();
   }
 });
 
