@@ -69,19 +69,22 @@ console.log("canvas", canvas);
 
 let mousePressed = false;
 
+const panCanvas = (event) => {
+  const mouseEvents = event.e;
+
+  canvas.set("selection", false);
+  canvas.setCursor("grabbing");
+  const delta = new fabric.Point(mouseEvents.movementX, mouseEvents.movementY);
+  canvas.relativePan(delta);
+  canvas.renderAll();
+};
+
 // MOUSE MOVE EVENT
 canvas.on("mouse:move", (event) => {
   const mouseEvents = event.e;
 
-  if (mousePressed) {
-    canvas.set("selection", false);
-    canvas.setCursor("grabbing");
-    const delta = new fabric.Point(
-      mouseEvents.movementX,
-      mouseEvents.movementY
-    );
-    canvas.relativePan(delta);
-    canvas.renderAll();
+  if (panModeButton.checked === true && mousePressed) {
+    panCanvas(event);
   } else {
     canvas.set("selection", true);
     canvas.setCursor("default");
