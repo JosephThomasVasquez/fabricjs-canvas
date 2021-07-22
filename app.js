@@ -27,6 +27,7 @@ cursorModeButton.addEventListener("click", (e) => {
     panModeButton.previousElementSibling.classList.remove("selected-tool");
     drawModeButton.checked = false;
     drawModeButton.previousElementSibling.classList.remove("selected-tool");
+    canvas.isDrawingMode = false;
   }
 });
 
@@ -40,6 +41,7 @@ panModeButton.addEventListener("click", (e) => {
     cursorModeButton.previousElementSibling.classList.remove("selected-tool");
     drawModeButton.checked = false;
     drawModeButton.previousElementSibling.classList.remove("selected-tool");
+    canvas.isDrawingMode = false;
   }
 });
 
@@ -104,10 +106,17 @@ console.log("canvas", canvas);
 
 let mousePressed = false;
 
-const panCanvas = (event) => {
+// PAN CANVAS FUNCTION
+const panMode = (event) => {
   const mouseEvents = event.e;
   const delta = new fabric.Point(mouseEvents.movementX, mouseEvents.movementY);
   canvas.relativePan(delta);
+  canvas.renderAll();
+};
+
+const drawingMode = (drawingState) => {
+  console.log("isDrawing", canvas.isDrawingMode);
+  canvas.isDrawingMode = drawingState;
   canvas.renderAll();
 };
 
@@ -116,7 +125,16 @@ canvas.on("mouse:move", (event) => {
   if (panModeButton.checked && mousePressed) {
     canvas.set("selection", false);
     canvas.setCursor("grabbing");
-    panCanvas(event);
+    panMode(event);
+  }
+
+  if (drawModeButton.checked) {
+    canvas.setCursor("crosshair");
+
+    if (mousePressed) {
+      const isDrawing = (canvas.isDrawingMode = true);
+      drawingMode(isDrawing);
+    }
   }
 });
 
