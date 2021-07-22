@@ -52,13 +52,34 @@ function toggleUniform() {
 
 console.log("canvas", canvas);
 
+let mousePressed = false;
+
 // Mouse Move Event
-canvas.on("mouse:move", (e) => {});
+canvas.on("mouse:move", (event) => {
+  const mouseEvents = event.e;
+
+  if (mousePressed) {
+    canvas.set("selection", false);
+    const delta = new fabric.Point(
+      mouseEvents.movementX,
+      mouseEvents.movementY
+    );
+    canvas.relativePan(delta);
+  } else {
+    canvas.set("selection", true);
+  }
+});
 
 // Canvas events MOUSE DOWN
-canvas.on("mouse:down", (options) => {
-  console.log("options", options);
-  console.log(options.e.clientX, options.e.clientY);
+canvas.on("mouse:down", (e) => {
+  mousePressed = true;
+  console.log("options", e);
+  console.log(e.e.clientX, e.e.clientY);
+});
+
+// Canvas events MOUSE UP
+canvas.on("mouse:up", (e) => {
+  mousePressed = false;
 });
 
 // MOUSE OVER EVENT
@@ -73,7 +94,6 @@ canvas.on("mouse:over", (e) => {
   }
 
   // console.log('event', e);
-
   canvas.renderAll();
 });
 
