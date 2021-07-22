@@ -1,14 +1,35 @@
+// Initialize the Canvas
 const initializeCanvas = (id) => {
   const canvas = new fabric.Canvas(id, {
     width: 1200,
-    height: 800,
+    height: 1000,
     backgroundColor: "#ffffff",
   });
-  
+
   return canvas;
 };
 
+const setBackgroundImage = (url, canvas) => {
+  fabric.Image.fromURL(url, (bgImage) => {
+    console.log("background image", bgImage);
+
+    canvas.set("width", bgImage.width);
+    canvas.set("height", bgImage.height);
+
+    canvas.backgroundImage = bgImage;
+
+    console.log("canvas", canvas);
+    canvas.renderAll();
+  });
+};
+
 const canvas = initializeCanvas("canvas");
+
+setBackgroundImage(
+  "https://aptito.com/wp-content/uploads/2018/06/restaurant-floor-plan.png",
+  canvas
+);
+
 // canvas.setBackgroundImage("https://source.unsplash.com/random");
 const imageElement = document.getElementById("my-image");
 
@@ -30,29 +51,18 @@ function toggleUniform() {
 }
 
 console.log("canvas", canvas);
-fabric.Image.fromURL(
-  "https://aptito.com/wp-content/uploads/2018/06/restaurant-floor-plan.png",
-  (bgImage) => {
-    console.log("background image", bgImage);
 
-    canvas.set("width", bgImage.width);
-    canvas.set("height", bgImage.height);
-
-    canvas.backgroundImage = bgImage;
-
-    console.log("canvas", canvas);
-    canvas.requestRenderAll();
-  }
-);
+// Mouse Move Event
+canvas.on("mouse:move", (e) => {});
 
 // Canvas events MOUSE DOWN
-canvas.on("mouse:down", function (options) {
+canvas.on("mouse:down", (options) => {
   console.log("options", options);
   console.log(options.e.clientX, options.e.clientY);
 });
 
 // MOUSE OVER EVENT
-canvas.on("mouse:over", function (e) {
+canvas.on("mouse:over", (e) => {
   const colors = [];
 
   if (e.target) {
@@ -62,11 +72,13 @@ canvas.on("mouse:over", function (e) {
     e.target.set("opacity", 0.7);
   }
 
+  // console.log('event', e);
+
   canvas.renderAll();
 });
 
 // MOUSE OUT EVENT
-canvas.on("mouse:out", function (e) {
+canvas.on("mouse:out", (e) => {
   if (e.target) {
     e.target.set("opacity", 1);
   }
