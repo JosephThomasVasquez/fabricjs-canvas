@@ -67,14 +67,14 @@ const toolModes = (e) => {};
 
 const setBackgroundImage = (url, canvas) => {
   fabric.Image.fromURL(url, (bgImage) => {
-    console.log("background image", bgImage);
+    // console.log("background image", bgImage);
 
     canvas.set("width", bgImage.width);
     canvas.set("height", bgImage.height);
 
     canvas.backgroundImage = bgImage;
 
-    console.log("canvas", canvas);
+    // console.log("canvas", canvas);
     canvas.renderAll();
   });
 };
@@ -263,17 +263,42 @@ const deleteObject = (e, object) => {
 
 // GET KEYBOARD EVENTS
 document.addEventListener("keydown", (e) => {
-  switch (e.key) {
-    case "Delete":
-      const activeObject = canvas.getActiveObject();
-
-      if (activeObject) {
+  const activeObject = canvas.getActiveObject();
+  console.log(e.key);
+  if (activeObject) {
+    switch (e.key) {
+      case "Delete":
         deleteObject(e.key, activeObject);
-      }
 
-      break;
+        break;
 
-    default:
-      break;
+      case "ArrowUp":
+        console.log("Object:", activeObject);
+        activeObject.top -= 1;
+        canvas.renderAll();
+        break;
+
+      case "ArrowDown":
+        console.log("Object:", activeObject);
+        activeObject.top += 1;
+        canvas.renderAll();
+        break;
+
+      case "ArrowLeft":
+        console.log("Object:", activeObject);
+        activeObject.left -= 1;
+        canvas.renderAll();
+        break;
+
+      case "ArrowRight":
+        console.log("Object:", activeObject);
+        activeObject.left += 1;
+        canvas.renderAll();
+        break;
+
+      default:
+        canvas.renderAll();
+        break;
+    }
   }
 });
