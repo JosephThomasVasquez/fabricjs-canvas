@@ -234,3 +234,46 @@ console.log("rect", rect);
 canvas.add(rect);
 canvas.add(rect2);
 canvas.add(imageFabric);
+
+// ========================================================================================================
+// CONTROLS ===============================================================================================
+// ========================================================================================================
+
+// DELETE OBJECT
+const deleteObject = (e, object) => {
+  // console.log("Delete Object (key):", e);
+
+  if (object != null || object != undefined) {
+    canvas.remove(object);
+
+    console.log("Active Objects:", canvas.getActiveObjects());
+  } else if (canvas.getActiveObjects() >= 2) {
+    // console.log(object.getObjects().length);
+    // console.log(canvas.getActiveGroup());
+
+    canvas.getActiveObjects().forEach((item) => {
+      console.log(item);
+      canvas.remove(item);
+    });
+    canvas.deactivateAll();
+  }
+  canvas.renderAll();
+  console.log("No items selected");
+};
+
+// GET KEYBOARD EVENTS
+document.addEventListener("keydown", (e) => {
+  switch (e.key) {
+    case "Delete":
+      const activeObject = canvas.getActiveObject();
+
+      if (activeObject) {
+        deleteObject(e.key, activeObject);
+      }
+
+      break;
+
+    default:
+      break;
+  }
+});
