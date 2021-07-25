@@ -120,6 +120,9 @@ const panMode = (event) => {
 
 const drawingMode = (drawingState) => {
   console.log("isDrawing", canvas.isDrawingMode);
+
+  canvas.freeDrawingBrush.color = "red";
+  canvas.freeDrawingBrush.width = 5;
   canvas.isDrawingMode = drawingState;
   canvas.renderAll();
 };
@@ -264,7 +267,7 @@ const deleteObject = (e, object) => {
 // GET KEYBOARD EVENTS
 document.addEventListener("keydown", (e) => {
   const activeObject = canvas.getActiveObject();
-  console.log(e.key);
+  console.log('Key: ', e);
   if (activeObject) {
     switch (e.key) {
       case "Delete":
